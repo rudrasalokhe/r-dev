@@ -1,625 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rudra Salokhe — Developer & Systems Engineer</title>
-  <meta name="description"
-    content="Rudra Salokhe — Building low-latency backends, real-time AI streaming pipelines, and resilient distributed systems." />
-
-  <!-- Google Fonts: Space Grotesk / Inter + JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0e8">
+  <meta name="description" content="Rudra Salokhe — backend, AI and systems engineer seeking ambitious internship opportunities.">
+  <title>Rudra Salokhe — Backend / AI / Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Top Navigation Bar -->
-  <header class="top-nav">
-    <div class="nav-container">
-      <div class="nav-left">
-        <a href="#hero" class="nav-brand">
-          <span class="brand-code">rs.</span>
-          <span class="brand-meta">DEVELOPER / PORTFOLIO</span>
-        </a>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
 
-      <nav class="nav-right" aria-label="Main Navigation">
-        <a href="#projects" class="nav-link">01. PROJECTS</a>
-        <a href="#toolkit" class="nav-link">02. TOOLKIT</a>
-        <a href="#experience" class="nav-link">03. EXPERIENCE</a>
-        <a href="#identity" class="nav-link">04. IDENTITY</a>
-      </nav>
-    </div>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Rudra Salokhe, home">
+      <span class="wordmark-mark">RS</span>
+      <span>RUDRA<br>SALOKHE</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#about">Profile</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="header-cta magnetic" href="mailto:rudrasalokhe100@gmail.com">LET'S TALK <span>↗</span></a>
   </header>
 
-  <main>
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="container">
-        <!-- Top metadata row -->
-        <div class="meta-row">
-          <span class="meta-tag">BACKEND / AI / SYSTEMS</span>
-          <span class="meta-location">MUMBAI, INDIA</span>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-status reveal">
+        <span class="status-pulse"></span>
+        SEEKING HIGH-IMPACT INTERNSHIPS
+        <span class="status-location">MUMBAI / INDIA</span>
+      </div>
+
+      <div class="hero-type" aria-label="I build systems that refuse to be boring">
+        <div class="hero-line line-one reveal">I BUILD <span class="scribble">SYSTEMS</span></div>
+        <div class="hero-line line-two reveal">THAT REFUSE</div>
+        <div class="hero-line line-three reveal">TO BE <span class="outline-word">BORING.</span></div>
+      </div>
+
+      <div class="hero-bottom reveal">
+        <div class="hero-intro">
+          <span class="eyebrow">BACKEND × AI × REAL-TIME</span>
+          <p>I’m Rudra, a developer turning messy, high-stakes problems into resilient products—from live AI commentary to offline polar operations.</p>
         </div>
-
-        <!-- Big Name Header -->
-        <h1 class="hero-title">Rudra Salokhe</h1>
-        <div class="hero-role">
-          <span class="role-square"></span>
-          <span class="role-text">Developer</span>
+        <div class="hero-actions">
+          <a class="button button-dark magnetic" href="#work">See what I ship <span>↓</span></a>
+          <a class="text-link" href="https://github.com/rudrasalokhe" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="text-link" href="https://www.linkedin.com/in/rudra-salokhe-12196b250/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </div>
+      </div>
 
-        <!-- Two Column Hero Body -->
-        <div class="hero-grid">
-          <div class="hero-left">
-            <p class="hero-tagline">
-              Building low-latency backends, real-time AI streaming pipelines, and resilient distributed systems.
-            </p>
-            <div class="hero-cta-wrapper">
-              <a href="#projects" class="btn-lime">
-                <span>EXPLORE THE BUILDS</span>
-                <span class="arrow-down">↓</span>
-              </a>
-            </div>
-          </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <div class="orbit-ring ring-one"><span>PYTHON</span><span>FASTAPI</span><span>WEBSOCKETS</span></div>
+        <div class="orbit-ring ring-two"><span>NEXT.JS</span><span>POSTGRES</span></div>
+        <div class="orbit-core">RS<span>→</span></div>
+      </div>
 
-          <div class="hero-right">
-            <!-- Systems Pipeline Visual Card -->
-            <div class="terminal-card">
-              <div class="terminal-header">
-                <span class="terminal-title">STREAM &rarr; PROCESS &rarr; DELIVER</span>
-                <span class="terminal-close">✕</span>
-              </div>
-              <div class="pipeline-diagram">
-                <div class="pipeline-flow">
-                  <div class="stream-source">
-                    <span class="pulse-point"></span>
-                    <span class="stream-line"></span>
-                  </div>
-
-                  <div class="pipeline-box-ai">
-                    <span>REAL-TIME AI</span>
-                  </div>
-
-                  <div class="stream-waveform-wrap">
-                    <svg class="audio-waves" viewBox="0 0 160 50" preserveAspectRatio="none">
-                      <path
-                        d="M 0,25 Q 5,25 10,25 Q 15,10 20,40 Q 25,5 30,45 Q 35,15 40,35 Q 45,2 50,48 Q 55,18 60,32 Q 65,0 70,50 Q 75,20 80,30 Q 85,8 90,42 Q 95,22 100,28 Q 105,4 110,46 Q 115,24 120,26 Q 125,12 130,38 Q 135,25 140,25 L 160,25"
-                        fill="none" stroke="#ccff00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div class="pipeline-labels">
-                  <span class="label-muted">DATA STREAM</span>
-                  <span class="label-muted">AUDIO STREAM</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3-Column Focus Bar -->
-        <div class="focus-bar">
-          <div class="focus-col">
-            <span class="focus-num">01 /</span>
-            <span class="focus-title">LOW-LATENCY BACKENDS</span>
-          </div>
-          <div class="focus-col">
-            <span class="focus-num">02 /</span>
-            <span class="focus-title">REAL-TIME AI STREAMING</span>
-          </div>
-          <div class="focus-col">
-            <span class="focus-num">03 /</span>
-            <span class="focus-title">RESILIENT SYSTEMS</span>
-          </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>AVAILABLE FOR INTERNSHIPS ✦ BACKEND ENGINEERING ✦ AI PRODUCTS ✦ DISTRIBUTED SYSTEMS ✦</span>
+          <span>AVAILABLE FOR INTERNSHIPS ✦ BACKEND ENGINEERING ✦ AI PRODUCTS ✦ DISTRIBUTED SYSTEMS ✦</span>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 01: FEATURED PROJECTS & BUILDS -->
-    <section id="projects" class="section projects-section">
-      <div class="container">
-        <!-- Section Header -->
-        <div class="section-top-bar">
-          <span class="section-meta">01 / FEATURED PROJECTS &amp; BUILDS</span>
-          <span class="section-owner">RUDRA SALOKHE</span>
+    <section class="recruiter-strip" aria-label="Quick profile">
+      <div class="strip-label">THE 30-SECOND VERSION</div>
+      <div class="signal"><strong>04</strong><span>REAL PRODUCTS<br>& SYSTEMS</span></div>
+      <div class="signal"><strong>01</strong><span>BACKEND<br>INTERNSHIP</span></div>
+      <div class="signal"><strong>∞</strong><span>CURIOSITY<br>FOR HARD PROBLEMS</span></div>
+      <a class="signal-link" href="mailto:rudrasalokhe100@gmail.com">START A<br>CONVERSATION ↗</a>
+    </section>
+
+    <section class="work-section" id="work">
+      <div class="section-heading-row reveal">
+        <div>
+          <span class="section-index">01 / SELECTED WORK</span>
+          <h2>Things I’ve<br><em>made real.</em></h2>
         </div>
-        <h2 class="section-heading">Built for the real world.</h2>
+        <p>Not tutorial projects. Products and systems built around real constraints: latency, connectivity, trust, and people.</p>
+      </div>
 
-        <!-- PROJECT 1: ThirdEye -->
-        <article class="project-block">
-          <div class="project-top-meta">
-            <span class="project-meta-left">01 / REAL-TIME AI</span>
-            <span class="project-meta-right">FEATURED BUILD</span>
-          </div>
-
-          <div class="project-columns">
-            <div class="project-info">
-              <h3 class="project-title">ThirdEye</h3>
-              <p class="project-role-tag">Real-Time AI Sports Audio Commentary</p>
-              <p class="project-description">
-                A low-latency commentary engine transforming live match data streams into synthesized audio commentary
-                in real time.
-              </p>
-
-              <div class="tech-tags">
-                <span class="pill">FastAPI</span>
-                <span class="pill">Groq LLM</span>
-                <span class="pill">Sarvam AI</span>
-                <span class="pill">WebSockets</span>
-              </div>
-
-              <ul class="bullet-list">
-                <li>
-                  <span class="bullet-arrow">↳</span>
-                  <span>Real-time stream parsing for live match telemetry.</span>
-                </li>
-                <li>
-                  <span class="bullet-arrow">↳</span>
-                  <span>Context-aware prompt generation feeding high-speed audio generation via Sarvam AI.</span>
-                </li>
-                <li>
-                  <span class="bullet-arrow">↳</span>
-                  <span>Engineered for low-latency streaming pipelines.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-visual">
-              <div class="terminal-card">
-                <div class="terminal-header">
-                  <span class="terminal-title">THIRDEYE // STREAMING PIPELINE</span>
-                  <span class="terminal-close">✕</span>
-                </div>
-
-                <div class="pipeline-spec">
-                  <div class="status-indicator">
-                    <span class="live-dot"></span>
-                    <span>LIVE MATCH TELEMETRY &rarr; WEBSOCKETS</span>
-                  </div>
-
-                  <div class="flow-stages">
-                    <div class="flow-box">
-                      <strong>Parse</strong>
-                      <small>TELEMETRY</small>
-                    </div>
-                    <span class="flow-arrow">&rarr;</span>
-                    <div class="flow-box">
-                      <strong>Context</strong>
-                      <small>LLM PROMPT</small>
-                    </div>
-                    <span class="flow-arrow">&rarr;</span>
-                    <div class="flow-box flow-box-highlight">
-                      <strong>Synthesize</strong>
-                      <small>SARVAM AI</small>
-                    </div>
-                  </div>
-
-                  <!-- Oscilloscope wave visualizer -->
-                  <div class="waveform-container">
-                    <svg class="waveform-svg" viewBox="0 0 400 45" preserveAspectRatio="none">
-                      <path
-                        d="M 0,22 L 30,22 L 38,5 L 46,38 L 54,12 L 62,30 L 70,22 L 120,22 L 128,4 L 136,40 L 144,10 L 152,34 L 160,22 L 210,22 L 218,6 L 226,38 L 234,14 L 242,32 L 250,22 L 300,22 L 308,2 L 316,42 L 324,8 L 332,36 L 340,22 L 400,22"
-                        fill="none" stroke="#ccff00" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    </svg>
-                  </div>
-
-                  <div class="pipeline-footer-row">
-                    <span class="mono-label">SYNTHESIZED AUDIO COMMENTARY</span>
-                    <span class="mono-label-lime">REAL-TIME</span>
-                  </div>
-                </div>
-              </div>
+      <article class="project project-featured reveal" data-project="ai">
+        <div class="project-copy">
+          <div class="project-meta"><span>01</span><span>REAL-TIME AI</span><span>FEATURED</span></div>
+          <h3>Third<span>Eye</span></h3>
+          <p class="project-kicker">Live sports data goes in. Context-aware audio commentary comes out.</p>
+          <p class="project-body">A low-latency commentary engine that parses match telemetry, builds contextual LLM prompts, and synthesizes audio in real time.</p>
+          <ul class="project-proof">
+            <li>Live telemetry parsing</li>
+            <li>Context-aware generation</li>
+            <li>Streaming audio pipeline</li>
+          </ul>
+          <div class="stack"><span>FastAPI</span><span>Groq LLM</span><span>Sarvam AI</span><span>WebSockets</span></div>
+        </div>
+        <div class="project-stage stage-ai" data-tilt>
+          <div class="stage-top"><span>THIRDEYE // LIVE SIGNAL</span><span class="live"><i></i> LIVE</span></div>
+          <div class="commentary-card">
+            <span class="commentary-label">GENERATING COMMENTARY</span>
+            <p>“A sharp pass splits the defense—<br>this move is opening up fast.”</p>
+            <div class="wave" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
           </div>
+          <div class="pipeline"><span>DATA</span><b>→</b><span>CONTEXT</span><b>→</b><span>VOICE</span></div>
+        </div>
+      </article>
+
+      <article class="project project-split reveal" data-project="systems">
+        <div class="project-copy">
+          <div class="project-meta"><span>02</span><span>DISTRIBUTED SYSTEMS</span></div>
+          <h3>Polar<span>Link</span></h3>
+          <p class="project-kicker">An expedition command system that keeps working when the internet doesn’t.</p>
+          <p class="project-body">Fault-tolerant logistics and communication for zero-connectivity environments, with local caching and peer-to-peer synchronization.</p>
+          <div class="stack"><span>Express</span><span>MongoDB</span><span>Docker</span><span>Offline-first</span></div>
+          <a class="project-link magnetic" href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank" rel="noreferrer">Explore the repository <span>↗</span></a>
+        </div>
+        <div class="project-stage stage-polar" data-tilt>
+          <div class="coordinates">79°N / OFF-GRID</div>
+          <div class="radar">
+            <span class="radar-sweep"></span>
+            <i class="node node-a"></i><i class="node node-b"></i><i class="node node-c"></i>
+          </div>
+          <div class="offline-chip"><i></i> REMOTE LINK OFFLINE<br><strong>LOCAL OPS ACTIVE</strong></div>
+        </div>
+      </article>
+
+      <div class="project-grid">
+        <article class="project-mini project-orange reveal" data-project="product">
+          <div class="project-meta"><span>03</span><span>CREATOR CRM</span></div>
+          <h3>Deals<br>InBox<span>.in</span></h3>
+          <p>One clean workflow for creators to manage pitches, contracts, and payments.</p>
+          <div class="stack"><span>Next.js</span><span>Tailwind</span><span>Full-stack APIs</span></div>
+          <div class="mini-links">
+            <a href="https://dealsinbox.in/" target="_blank" rel="noreferrer">LIVE ↗</a>
+            <a href="https://github.com/rudrasalokhe/dealinbox" target="_blank" rel="noreferrer">CODE ↗</a>
+          </div>
+          <div class="floating-deal" aria-hidden="true"><span>NEW DEAL</span><strong>Brand collaboration</strong><small>READY TO REVIEW →</small></div>
         </article>
 
-        <!-- PROJECT 2: PolarLink -->
-        <article class="project-block">
-          <div class="project-top-meta">
-            <span class="project-meta-left">02 / DISTRIBUTED SYSTEMS</span>
-            <div class="project-meta-links">
-              <span class="project-meta-right">EXPEDITION OPS</span>
-              <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank" rel="noopener noreferrer" class="project-link-badge project-link-badge-gh">
-                <span>GITHUB REPO</span>
-                <span class="link-arrow">&nearr;</span>
-              </a>
-            </div>
+        <article class="project-mini project-blue reveal" data-project="product">
+          <div class="project-meta"><span>04</span><span>HEALTHTECH</span></div>
+          <h3>Pay<br>Slot<span>.in</span></h3>
+          <p>Telemedicine for appointments, video consultations, and digital prescriptions.</p>
+          <div class="stack"><span>Next.js</span><span>WebRTC</span><span>PostgreSQL</span></div>
+          <div class="mini-links">
+            <a href="https://payslot.in/" target="_blank" rel="noreferrer">LIVE ↗</a>
+            <a href="https://github.com/rudrasalokhe/payslot-web" target="_blank" rel="noreferrer">CODE ↗</a>
           </div>
-
-          <div class="project-columns">
-            <div class="project-info">
-              <h3 class="project-title">
-                <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank" rel="noopener noreferrer" class="title-external-link">
-                  PolarLink
-                  <span class="external-icon">&nearr;</span>
-                </a>
-              </h3>
-              <p class="project-role-tag">Offline-First Polar Expedition Command System</p>
-              <p class="project-description">
-                A fault-tolerant logistics and communication system engineered for zero-connectivity environments.
-              </p>
-
-              <div class="tech-tags">
-                <span class="pill">Express</span>
-                <span class="pill">MongoDB</span>
-                <span class="pill">Docker Compose</span>
-                <span class="pill">Offline-First Sync Architecture</span>
-                <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank" rel="noopener noreferrer" class="pill pill-github">
-                  <span>GitHub &nearr;</span>
-                </a>
-              </div>
-
-              <ul class="bullet-list">
-                <li>
-                  <span class="bullet-arrow">↳</span>
-                  <span>Local caching and peer-to-peer data synchronization when remote links fail.</span>
-                </li>
-                <li>
-                  <span class="bullet-arrow">↳</span>
-                  <span>Multi-container setup managed via Docker Compose for rapid offline deployment.</span>
-                </li>
-                <li>
-                  <span class="bullet-arrow">↳</span>
-                  <span>Resilient data architecture designed for extreme network edge cases.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="project-visual">
-              <div class="terminal-card">
-                <div class="terminal-header">
-                  <span class="terminal-title">POLARLINK // OFFLINE-FIRST</span>
-                  <span class="terminal-close">✕</span>
-                </div>
-
-                <div class="pipeline-spec">
-                  <div class="status-indicator muted-alert">
-                    <span class="status-cross">⚡</span>
-                    <span>REMOTE LINK: DISCONNECTED</span>
-                  </div>
-
-                  <!-- P2P Sync Diagram -->
-                  <div class="sync-grid">
-                    <div class="cache-box">
-                      <strong>Local cache</strong>
-                      <small>Expedition Base</small>
-                    </div>
-                    <div class="sync-arrow-box">
-                      <span class="sync-icon">&harr;</span>
-                    </div>
-                    <div class="cache-box">
-                      <strong>Local cache</strong>
-                      <small>Expedition Unit</small>
-                    </div>
-                  </div>
-
-                  <!-- Container orchestration block -->
-                  <div class="orchestration-box">
-                    <div class="orch-subhead">MULTI-CONTAINER DOCKER ORCHESTRATION</div>
-                    <div class="orch-techs">
-                      <span>Express</span>
-                      <span>MongoDB</span>
-                      <span class="orch-meta">EDGE NODES</span>
-                    </div>
-                  </div>
-
-                  <div class="pipeline-footer-row">
-                    <span class="mono-label">LOCAL OPERATIONS / ZERO CONNECTIVITY</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJECT 3: DealsInBox.in -->
-        <article class="project-block project-horizontal">
-          <div class="project-top-meta">
-            <span class="project-meta-left">03 / CREATOR CRM &amp; WORKFLOW</span>
-            <div class="project-meta-links">
-              <a href="https://github.com/rudrasalokhe/dealinbox" target="_blank" rel="noopener noreferrer" class="project-link-badge project-link-badge-gh">
-                <span>GITHUB REPO</span>
-                <span class="link-arrow">&nearr;</span>
-              </a>
-              <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer" class="project-link-badge">
-                <span>DEALSINBOX.IN</span>
-                <span class="link-arrow">&nearr;</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="project-horizontal-row">
-            <div class="proj-h-left">
-              <h3 class="project-title">
-                <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer" class="title-external-link">
-                  DealsInBox.in
-                  <span class="external-icon">&nearr;</span>
-                </a>
-              </h3>
-              <p class="project-role-tag">Brand Deal CRM for Content Creators</p>
-            </div>
-
-            <div class="proj-h-right">
-              <p class="project-description">
-                Brand deal CRM for content creators — manage pitches, contracts, and payments in one place.
-              </p>
-              <div class="tech-tags">
-                <span class="pill">Next.js</span>
-                <span class="pill">Tailwind CSS</span>
-                <span class="pill">Full-Stack API Integration</span>
-                <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer" class="pill pill-live">
-                  <span class="live-dot-sm"></span>
-                  <span>dealsinbox.in &nearr;</span>
-                </a>
-                <a href="https://github.com/rudrasalokhe/dealinbox" target="_blank" rel="noopener noreferrer" class="pill pill-github">
-                  <span>GitHub &nearr;</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- PROJECT 04: PaySlot.in -->
-        <article class="project-block project-horizontal">
-          <div class="project-top-meta">
-            <span class="project-meta-left">04 / HEALTHCARE &amp; TELEMEDICINE</span>
-            <div class="project-meta-links">
-              <a href="https://github.com/rudrasalokhe/payslot-web" target="_blank" rel="noopener noreferrer" class="project-link-badge project-link-badge-gh">
-                <span>GITHUB REPO</span>
-                <span class="link-arrow">&nearr;</span>
-              </a>
-              <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer" class="project-link-badge">
-                <span>PAYSLOT.IN</span>
-                <span class="link-arrow">&nearr;</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="project-horizontal-row">
-            <div class="proj-h-left">
-              <h3 class="project-title">
-                <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer" class="title-external-link">
-                  PaySlot.in
-                  <span class="external-icon">&nearr;</span>
-                </a>
-              </h3>
-              <p class="project-role-tag">Telemedicine &amp; Healthcare Scheduling Platform</p>
-            </div>
-
-            <div class="proj-h-right">
-              <p class="project-description">
-                Telemedicine platform for booking doctor appointments, video consultations, and digital prescriptions.
-              </p>
-              <div class="tech-tags">
-                <span class="pill">Next.js</span>
-                <span class="pill">WebRTC / Video</span>
-                <span class="pill">PostgreSQL</span>
-                <span class="pill">Payments &amp; Scheduling</span>
-                <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer" class="pill pill-live">
-                  <span class="live-dot-sm"></span>
-                  <span>payslot.in &nearr;</span>
-                </a>
-                <a href="https://github.com/rudrasalokhe/payslot-web" target="_blank" rel="noopener noreferrer" class="pill pill-github">
-                  <span>GitHub &nearr;</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <div class="appointment" aria-hidden="true"><span>VIDEO CONSULT</span><strong>10:30 AM</strong><div>JOIN ROOM →</div></div>
         </article>
       </div>
     </section>
 
-    <!-- SECTION 02: TECHNICAL TOOLKIT -->
-    <section id="toolkit" class="section toolkit-section">
-      <div class="container">
-        <!-- Section Top Bar -->
-        <div class="section-top-bar">
-          <span class="section-meta">02 / TECHNICAL TOOLKIT</span>
-          <span class="section-owner">RUDRA SALOKHE</span>
+    <section class="about-section" id="about">
+      <div class="about-statement reveal">
+        <span class="section-index">02 / HOW I THINK</span>
+        <p>I like the layer where <em>product ambition</em> meets <span>engineering reality.</span></p>
+      </div>
+      <div class="about-grid">
+        <div class="about-note reveal">
+          <div class="note-pin"></div>
+          <span>MY OPERATING SYSTEM</span>
+          <p>Start with the failure case. Make the data flow visible. Ship the smallest honest version. Measure. Refine.</p>
+          <small>RUDRA / 2026</small>
         </div>
-        <h2 class="section-heading">The tools behind the systems.</h2>
-
-        <!-- Toolkit Table / Matrix -->
-        <div class="toolkit-table">
-          <div class="table-header-row">
-            <div class="col-domain">DOMAIN</div>
-            <div class="col-stack">LANGUAGES / FRAMEWORKS / INFRASTRUCTURE</div>
-          </div>
-
-          <!-- Languages -->
-          <div class="table-data-row">
-            <div class="row-label">Languages</div>
-            <div class="row-content">
-              <span class="item"><span class="item-arrow">›</span>Python</span>
-              <span class="item"><span class="item-arrow">›</span>TypeScript</span>
-              <span class="item"><span class="item-arrow">›</span>JavaScript</span>
-              <span class="item"><span class="item-arrow">›</span>SQL</span>
-            </div>
-          </div>
-
-          <!-- Backend & Systems -->
-          <div class="table-data-row">
-            <div class="row-label">Backend &amp; Systems</div>
-            <div class="row-content">
-              <span class="item"><span class="item-arrow">›</span>FastAPI</span>
-              <span class="item"><span class="item-arrow">›</span>Express</span>
-              <span class="item"><span class="item-arrow">›</span>PostgreSQL</span>
-              <span class="item"><span class="item-arrow">›</span>SQLAlchemy</span>
-              <span class="item"><span class="item-arrow">›</span>MongoDB</span>
-              <span class="item"><span class="item-arrow">›</span>Docker &amp; Docker Compose</span>
-            </div>
-          </div>
-
-          <!-- Frontend -->
-          <div class="table-data-row">
-            <div class="row-label">Frontend</div>
-            <div class="row-content">
-              <span class="item"><span class="item-arrow">›</span>Next.js</span>
-              <span class="item"><span class="item-arrow">›</span>React</span>
-              <span class="item"><span class="item-arrow">›</span>Tailwind CSS</span>
-            </div>
-          </div>
-
-          <!-- AI & Real-Time Tooling -->
-          <div class="table-data-row">
-            <div class="row-label">AI &amp; Real-Time Tooling</div>
-            <div class="row-content">
-              <span class="item"><span class="item-arrow">›</span>Groq LLM API</span>
-              <span class="item"><span class="item-arrow">›</span>Sarvam AI (TTS/STT)</span>
-              <span class="item"><span class="item-arrow">›</span>WebSockets / Real-Time Data Streaming</span>
-            </div>
-          </div>
-
-          <!-- Core CS & Infrastructure -->
-          <div class="table-data-row">
-            <div class="row-label">Core CS &amp; Infrastructure</div>
-            <div class="row-content">
-              <span class="item"><span class="item-arrow">›</span>Data Structures &amp; Algorithms</span>
-              <span class="item"><span class="item-arrow">›</span>System Design</span>
-              <span class="item"><span class="item-arrow">›</span>Containerized Deployments</span>
-            </div>
-          </div>
+        <div class="capabilities reveal">
+          <div class="capability"><span>01</span><h3>Backend & systems</h3><p>Python, TypeScript, FastAPI, Express, SQLAlchemy, PostgreSQL, MongoDB</p></div>
+          <div class="capability"><span>02</span><h3>AI & real-time</h3><p>LLM APIs, TTS/STT, WebSockets, streaming data pipelines</p></div>
+          <div class="capability"><span>03</span><h3>Product engineering</h3><p>Next.js, React, Tailwind CSS, Docker, deployment workflows</p></div>
+          <div class="capability"><span>04</span><h3>Core foundations</h3><p>Data structures, algorithms, system design, containerized infrastructure</p></div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 03: EXPERIENCE -->
-    <section id="experience" class="section experience-section">
-      <div class="container">
-        <!-- Section Top Bar -->
-        <div class="section-top-bar">
-          <span class="section-meta">03 / EXPERIENCE</span>
-          <span class="section-owner">RUDRA SALOKHE</span>
-        </div>
-        <h2 class="section-heading">Where I've built &amp; led.</h2>
-
-        <div class="experience-list">
-          <!-- Experience 1: FinDrome -->
-          <div class="experience-card">
-            <div class="exp-logo-wrap">
-              <img src="assets/findrome-logo.jpg" alt="FinDrome Logo" class="exp-logo" />
-            </div>
-
-            <div class="exp-content">
-              <div class="exp-top-row">
-                <div class="exp-role-title">Tech Sub-Head</div>
-                <span class="exp-badge exp-badge-active">CURRENT</span>
-              </div>
-              <div class="exp-company-name">FinDrome &mdash; The Finance Cell of NMIMS MPSTME</div>
-              <div class="exp-time-meta">
-                <span class="exp-period">Aug 2026 &mdash; Present</span>
-                <span class="exp-dot">&bull;</span>
-                <span class="exp-duration">3 mos</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Experience 2: CodeInfinity -->
-          <div class="experience-card">
-            <div class="exp-logo-wrap">
-              <img src="assets/codeinfinity-logo.jpg" alt="CodeInfinity Logo" class="exp-logo" />
-            </div>
-
-            <div class="exp-content">
-              <div class="exp-top-row">
-                <div class="exp-role-title">Back End Developer</div>
-                <span class="exp-badge exp-badge-intern">INTERNSHIP</span>
-              </div>
-              <div class="exp-company-name">CodeInfinity Software Solutions</div>
-              <div class="exp-time-meta">
-                <span class="exp-period">Jun 2024 &mdash; Aug 2024</span>
-                <span class="exp-dot">&bull;</span>
-                <span class="exp-duration">3 mos</span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <section class="experience-section" id="experience">
+      <div class="section-heading-row reveal">
+        <div><span class="section-index">03 / FIELD NOTES</span><h2>Proof of<br><em>momentum.</em></h2></div>
+        <p>A mix of engineering practice, leadership, and an interdisciplinary technical education.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <span class="timeline-year">2026—NOW</span>
+          <div class="company"><img src="assets/findrome-logo.jpg" alt="FinDrome logo"><span>FINDROME</span></div>
+          <div><h3>Tech Sub-Head</h3><p>The Finance Cell of NMIMS MPSTME</p></div>
+          <span class="timeline-tag">LEADERSHIP</span>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="timeline-year">2024</span>
+          <div class="company"><img src="assets/codeinfinity-logo.jpg" alt="CodeInfinity logo"><span>CODEINFINITY</span></div>
+          <div><h3>Backend Developer Intern</h3><p>CodeInfinity Software Solutions · Jun—Aug</p></div>
+          <span class="timeline-tag">INTERNSHIP</span>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="timeline-year">ACADEMIC</span>
+          <div class="company company-text"><span>NMIMS<br>MUMBAI</span></div>
+          <div><h3>B.Tech Computer Engineering + MBA Tech</h3><p>Integrated technology and management program</p></div>
+          <span class="timeline-tag">EDUCATION</span>
+        </article>
       </div>
     </section>
 
-    <!-- SECTION 04: IDENTITY & EDUCATION -->
-    <section id="identity" class="section identity-section">
-      <div class="container">
-        <!-- Section Top Bar -->
-        <div class="section-top-bar">
-          <span class="section-meta">04 / IDENTITY</span>
-          <span class="section-location">MUMBAI, INDIA</span>
-        </div>
-
-        <div class="identity-header-row">
-          <div>
-            <h2 class="identity-title">Rudra Salokhe</h2>
-            <div class="identity-subtitle">Developer</div>
-          </div>
-          <a href="#hero" class="btn-top" title="Back to top" aria-label="Back to top">
-            <span>&uarr;</span>
-          </a>
-        </div>
-
-        <!-- Academic & Technical Background -->
-        <div class="identity-details-grid">
-          <div class="identity-card">
-            <div class="card-meta">ACADEMIC FOUNDATION</div>
-            <h3 class="card-heading">B.Tech in Computer Engineering &amp; MBA in Technology</h3>
-            <div class="card-institution">NMIMS Mumbai &bull; Integrated Program</div>
-            <p class="card-text">
-              Specialized interdisciplinary engineering combining core computer systems, distributed architecture, and
-              data structures with technology management.
-            </p>
-          </div>
-
-          <div class="identity-card">
-            <div class="card-meta">COMMUNICATION &amp; LINKS</div>
-            <div class="links-stack">
-              <div class="link-item">
-                <span class="link-lbl">EMAIL</span>
-                <div class="copy-box">
-                  <span id="emailAddress">rudrasalokhe100@gmail.com</span>
-                  <button id="copyBtn" class="copy-action" title="Copy to clipboard">COPY</button>
-                </div>
-              </div>
-              <div class="link-item">
-                <span class="link-lbl">PROFILES</span>
-                <div class="profile-links">
-                  <a href="https://github.com/rudrasalokhe" target="_blank" rel="noopener noreferrer"
-                    class="social-link">GITHUB
-                    &nearr;</a>
-                  <a href="https://www.linkedin.com/in/rudra-salokhe-12196b250/" target="_blank"
-                    rel="noopener noreferrer" class="social-link">LINKEDIN
-                    &nearr;</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom Status Bar -->
-        <div class="bottom-status-bar">
-          <div class="status-left">
-            <span class="status-bullet">&bull;</span>
-            <span>BACKENDS, STREAMING PIPELINES, DISTRIBUTED SYSTEMS.</span>
-          </div>
-          <div class="status-right">
-            <span>END / PORTFOLIO</span>
-          </div>
-        </div>
+    <section class="contact-section" id="contact">
+      <div class="contact-top reveal"><span>04 / YOUR MOVE</span><span>MUMBAI, INDIA</span></div>
+      <div class="contact-copy reveal">
+        <p>Have a difficult problem<br>and room for an intern?</p>
+        <h2>LET’S<br><span>BUILD</span><br>SOMETHING.</h2>
       </div>
+      <div class="contact-actions reveal">
+        <a class="email-link magnetic" href="mailto:rudrasalokhe100@gmail.com">rudrasalokhe100@gmail.com <span>↗</span></a>
+        <button class="copy-button" type="button" data-copy="rudrasalokhe100@gmail.com">COPY EMAIL</button>
+      </div>
+      <footer>
+        <span>RUDRA SALOKHE © 2026</span>
+        <div><a href="https://github.com/rudrasalokhe" target="_blank" rel="noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/rudra-salokhe-12196b250/" target="_blank" rel="noreferrer">LINKEDIN ↗</a></div>
+        <a href="#top">BACK TO TOP ↑</a>
+      </footer>
     </section>
   </main>
 
-  <!-- Interactive toast message for clipboard -->
-  <div id="toast" class="toast-box">Copied to clipboard.</div>
-
+  <div class="toast" role="status" aria-live="polite">EMAIL COPIED — LET’S BUILD.</div>
   <script src="script.js"></script>
 </body>
-
 </html>
