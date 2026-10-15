@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const loader = document.querySelector(".intro-loader");
+  document.body.classList.add("is-loading");
+
+  const finishLoading = () => {
+    loader?.classList.add("is-done");
+    document.body.classList.remove("is-loading");
+  };
+  reduceMotion ? finishLoading() : setTimeout(finishLoading, 1050);
 
   const reveals = document.querySelectorAll(".reveal");
   if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -11,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    }, { threshold: .1, rootMargin: "0px 0px -5% 0px" });
     reveals.forEach((node) => observer.observe(node));
   }
 
@@ -24,15 +32,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const progress = document.querySelector(".scroll-progress");
+  let scrollFrame = 0;
+  const updateScroll = () => {
+    const maximum = document.documentElement.scrollHeight - innerHeight;
+    const ratio = maximum > 0 ? scrollY / maximum : 0;
+    if (progress) progress.style.transform = `scaleX(${ratio})`;
+    if (!reduceMotion) {
+      document.querySelectorAll(".hero-word").forEach((word, index) => {
+        const shift = Math.min(scrollY, innerHeight) * (index + 1) * .018;
+        word.style.translate = `${index % 2 ? shift : -shift}px 0`;
+      });
+    }
+    scrollFrame = 0;
+  };
+  addEventListener("scroll", () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll);
+  }, { passive: true });
+  updateScroll();
+
   const copyButton = document.querySelector("[data-copy]");
   const toast = document.querySelector(".toast");
   copyButton?.addEventListener("click", async () => {
-    const value = copyButton.dataset.copy;
     try {
-      await navigator.clipboard.writeText(value);
+      await navigator.clipboard.writeText(copyButton.dataset.copy);
     } catch {
       const field = document.createElement("textarea");
-      field.value = value;
+      field.value = copyButton.dataset.copy;
       field.style.position = "fixed";
       field.style.opacity = "0";
       document.body.appendChild(field);
@@ -45,37 +71,31 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       copyButton.textContent = "COPY EMAIL";
       toast?.classList.remove("show");
-    }, 2200);
+    }, 2000);
   });
 
   if (matchMedia("(pointer: fine)").matches && !reduceMotion) {
-    const cursor = document.querySelector(".cursor-dot");
+    const cursor = document.querySelector(".cursor");
     addEventListener("pointermove", (event) => {
-      cursor?.animate({ left: `${event.clientX}px`, top: `${event.clientY}px` }, { duration: 250, fill: "forwards" });
+      cursor?.animate(
+        { left: `${event.clientX}px`, top: `${event.clientY}px` },
+        { duration: 220, fill: "forwards" }
+      );
     }, { passive: true });
-    document.querySelectorAll("a, button, [data-tilt]").forEach((item) => {
-      item.addEventListener("pointerenter", () => cursor?.classList.add("active"));
-      item.addEventListener("pointerleave", () => cursor?.classList.remove("active"));
+
+    document.querySelectorAll("a, button, .skill, .project-card").forEach((element) => {
+      element.addEventListener("pointerenter", () => cursor?.classList.add("active"));
+      element.addEventListener("pointerleave", () => cursor?.classList.remove("active"));
     });
 
-    document.querySelectorAll("[data-tilt]").forEach((card) => {
-      card.addEventListener("pointermove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-        card.style.transform = `perspective(1000px) rotateX(${(-y * 2.5).toFixed(2)}deg) rotateY(${(x * 3.5).toFixed(2)}deg)`;
-      });
-      card.addEventListener("pointerleave", () => { card.style.transform = ""; });
-    });
-
-    document.querySelectorAll(".magnetic").forEach((button) => {
-      button.addEventListener("pointermove", (event) => {
-        const rect = button.getBoundingClientRect();
+    document.querySelectorAll(".magnetic").forEach((element) => {
+      element.addEventListener("pointermove", (event) => {
+        const rect = element.getBoundingClientRect();
         const x = (event.clientX - rect.left - rect.width / 2) * .12;
         const y = (event.clientY - rect.top - rect.height / 2) * .12;
-        button.style.transform = `translate(${x}px, ${y}px)`;
+        element.style.transform = `translate(${x}px, ${y}px)`;
       });
-      button.addEventListener("pointerleave", () => { button.style.transform = ""; });
+      element.addEventListener("pointerleave", () => { element.style.transform = ""; });
     });
   }
 });
