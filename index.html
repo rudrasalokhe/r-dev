@@ -118,15 +118,20 @@
       </div>
     </div>
 
-    <!-- 1. Header Interactive Starfield Banner -->
-    <div class="relative w-full h-36 sm:h-44 bg-black border-b border-borderSubtle overflow-hidden select-none">
-      <canvas id="starfield" class="w-full h-full block cursor-crosshair"></canvas>
-      <div class="absolute bottom-2.5 left-3 pointer-events-none text-[9px] text-zinc-600 font-mono tracking-wider opacity-75">
-        19.0760° N, 72.8777° E
+    <!-- 1. Header Interactive Telemetry Node Network Banner -->
+    <div class="relative w-full h-36 sm:h-44 bg-[#030306] border-b border-borderSubtle overflow-hidden select-none group">
+      <canvas id="telemetryCanvas" class="w-full h-full block cursor-crosshair"></canvas>
+      <div class="absolute bottom-2.5 left-3 pointer-events-none text-[9px] text-zinc-500 font-mono tracking-wider opacity-80 flex items-center gap-2">
+        <span>19.0760° N, 72.8777° E</span>
+        <span class="text-zinc-700">//</span>
+        <span class="text-emerald-400 font-pixel text-[8px]">ROUTING_PACKETS</span>
       </div>
       <div class="absolute bottom-2.5 right-3 pointer-events-none text-[9px] text-emerald-400 font-pixel tracking-widest flex items-center gap-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>ONLINE</span>
+        <span>SYS_LIVE</span>
+      </div>
+      <div class="absolute top-2.5 right-3 pointer-events-none text-[8px] text-zinc-600 font-mono hidden sm:block tracking-wide">
+        [CLICK_TO_PULSE]
       </div>
     </div>
 
@@ -660,74 +665,265 @@
 
   </main>
 
-  <!-- Interactive Canvas Starfield Script -->
+  <!-- Interactive Distributed Telemetry Node Network Canvas Script -->
   <script>
     (function () {
-      const canvas = document.getElementById('starfield');
+      const canvas = document.getElementById('telemetryCanvas') || document.getElementById('starfield');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       let width = 0, height = 0;
-      let stars = [];
-      const starCount = 65;
-      let mouseX = 0, mouseY = 0;
-      let targetX = 0, targetY = 0;
+      let dpr = 1;
+
+      let nodes = [];
+      const nodeCount = 42;
+      let packets = [];
+      const packetCount = 12;
+      let shockwaves = [];
+
+      let mouseX = -1000, mouseY = -1000;
+      let isHovered = false;
 
       function resize() {
         const parent = canvas.parentElement;
         if (!parent) return;
         width = parent.clientWidth;
         height = parent.clientHeight;
-        const dpr = window.devicePixelRatio || 1;
+        dpr = window.devicePixelRatio || 1;
         canvas.width = Math.floor(width * dpr);
         canvas.height = Math.floor(height * dpr);
         ctx.scale(dpr, dpr);
       }
 
-      function initStars() {
-        stars = [];
-        for (let i = 0; i < starCount; i++) {
-          stars.push({
+      function initNetwork() {
+        nodes = [];
+        for (let i = 0; i < nodeCount; i++) {
+          nodes.push({
             x: Math.random() * (width || 680),
             y: Math.random() * (height || 180),
-            size: Math.random() > 0.8 ? 2 : 1, // Retro pixel sizes: 1px or 2px
-            speedX: (Math.random() - 0.5) * 0.25,
-            speedY: (Math.random() - 0.5) * 0.2,
-            opacity: Math.random() * 0.5 + 0.3,
-            pulse: Math.random() * 0.02 + 0.005
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: (Math.random() - 0.5) * 0.4,
+            baseRadius: Math.random() > 0.8 ? 2.5 : 1.5,
+            pulse: Math.random() * Math.PI * 2,
+            isCore: Math.random() > 0.85
           });
+        }
+
+        // Active packets traveling along connection edges
+        packets = [];
+        for (let p = 0; p < packetCount; p++) {
+          const fromIdx = Math.floor(Math.random() * nodeCount);
+          let toIdx = (fromIdx + 1 + Math.floor(Math.random() * 5)) % nodeCount;
+          packets.push({
+            from: fromIdx,
+            to: toIdx,
+            progress: Math.random(),
+            speed: 0.009 + Math.random() * 0.012,
+            color: Math.random() > 0.35 ? '#10b981' : '#38bdf8'
+          });
+        }
+      }
+
+      function triggerPulse(x, y) {
+        shockwaves.push({
+          x: x,
+          y: y,
+          radius: 4,
+          maxRadius: Math.max(width, height) * 0.65,
+          alpha: 0.9,
+          speed: 4.8
+        });
+
+        // Kinetic push on nodes within blast radius
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const dx = n.x - x;
+          const dy = n.y - y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 180 && dist > 1) {
+            const force = (180 - dist) / 180 * 4.2;
+            n.vx += (dx / dist) * force;
+            n.vy += (dy / dist) * force;
+          }
         }
       }
 
       function render() {
         if (!width || !height) {
           resize();
-          initStars();
+          initNetwork();
         }
 
         ctx.clearRect(0, 0, width, height);
 
-        mouseX += (targetX - mouseX) * 0.05;
-        mouseY += (targetY - mouseY) * 0.05;
+        // 1. Subtle background telemetry matrix dots
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+        const gridSize = 24;
+        for (let gx = 12; gx < width; gx += gridSize) {
+          for (let gy = 12; gy < height; gy += gridSize) {
+            ctx.fillRect(gx, gy, 1, 1);
+          }
+        }
 
-        for (let i = 0; i < stars.length; i++) {
-          const s = stars[i];
-          s.x += s.speedX;
-          s.y += s.speedY;
+        // 2. Animate and draw shockwave pulses
+        for (let s = shockwaves.length - 1; s >= 0; s--) {
+          const sw = shockwaves[s];
+          sw.radius += sw.speed;
+          sw.alpha *= 0.95;
 
-          if (s.x < 0) s.x = width;
-          if (s.x > width) s.x = 0;
-          if (s.y < 0) s.y = height;
-          if (s.y > height) s.y = 0;
+          ctx.beginPath();
+          ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(16, 185, 129, ${sw.alpha * 0.6})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
 
-          s.opacity += Math.sin(Date.now() * s.pulse) * 0.01;
-          const alpha = Math.max(0.15, Math.min(0.85, s.opacity));
+          if (sw.alpha < 0.02 || sw.radius > sw.maxRadius) {
+            shockwaves.splice(s, 1);
+          }
+        }
 
-          ctx.fillStyle = `rgba(220, 220, 230, ${alpha})`;
-          const renderX = Math.floor(s.x + mouseX * (s.size * 0.25));
-          const renderY = Math.floor(s.y + mouseY * (s.size * 0.25));
+        // 3. Update Node Physics & Velocity Dampening
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          n.x += n.vx;
+          n.y += n.vy;
 
-          // Draw crisp pixel squares
-          ctx.fillRect(renderX, renderY, s.size, s.size);
+          n.vx *= 0.985;
+          n.vy *= 0.985;
+          if (Math.abs(n.vx) < 0.08) n.vx = (Math.random() - 0.5) * 0.4;
+          if (Math.abs(n.vy) < 0.08) n.vy = (Math.random() - 0.5) * 0.4;
+
+          if (n.x < 4) { n.x = 4; n.vx = Math.abs(n.vx); }
+          if (n.x > width - 4) { n.x = width - 4; n.vx = -Math.abs(n.vx); }
+          if (n.y < 4) { n.y = 4; n.vy = Math.abs(n.vy); }
+          if (n.y > height - 4) { n.y = height - 4; n.vy = -Math.abs(n.vy); }
+
+          // Cursor gravity spring
+          if (isHovered) {
+            const cdx = n.x - mouseX;
+            const cdy = n.y - mouseY;
+            const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+            if (cdist < 130 && cdist > 2) {
+              const pull = (130 - cdist) / 130 * 0.04;
+              n.vx -= (cdx / cdist) * pull * 4;
+              n.vy -= (cdy / cdist) * pull * 4;
+            }
+          }
+
+          n.pulse += 0.035;
+        }
+
+        // 4. Inter-Node Connections
+        for (let i = 0; i < nodes.length; i++) {
+          const n1 = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const n2 = nodes[j];
+            const dx = n1.x - n2.x;
+            const dy = n1.y - n2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 95) {
+              const alpha = (1 - dist / 95) * 0.32;
+              ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(n1.x, n1.y);
+              ctx.lineTo(n2.x, n2.y);
+              ctx.stroke();
+            }
+          }
+
+          // Dynamic Laser Tracing to Mouse
+          if (isHovered) {
+            const mdx = n1.x - mouseX;
+            const mdy = n1.y - mouseY;
+            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (mdist < 125) {
+              const malpha = (1 - mdist / 125) * 0.55;
+              ctx.strokeStyle = `rgba(56, 189, 248, ${malpha})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(n1.x, n1.y);
+              ctx.lineTo(mouseX, mouseY);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // 5. Active Traveling Data Packets
+        for (let p = 0; p < packets.length; p++) {
+          const pkt = packets[p];
+          const nFrom = nodes[pkt.from];
+          const nTo = nodes[pkt.to];
+
+          if (nFrom && nTo) {
+            const dx = nTo.x - nFrom.x;
+            const dy = nTo.y - nFrom.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 110) {
+              pkt.progress += pkt.speed;
+
+              const px = nFrom.x + dx * pkt.progress;
+              const py = nFrom.y + dy * pkt.progress;
+
+              ctx.fillStyle = pkt.color;
+              ctx.shadowColor = pkt.color;
+              ctx.shadowBlur = 6;
+              ctx.beginPath();
+              ctx.arc(px, py, 1.8, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.shadowBlur = 0;
+            } else {
+              pkt.progress = 1;
+            }
+
+            if (pkt.progress >= 1) {
+              pkt.progress = 0;
+              pkt.from = pkt.to;
+              let nearest = (pkt.from + 1) % nodeCount;
+              let minDist = 999;
+              for (let k = 0; k < nodeCount; k++) {
+                if (k === pkt.from) continue;
+                const d = Math.hypot(nodes[k].x - nodes[pkt.from].x, nodes[k].y - nodes[pkt.from].y);
+                if (d < 110 && d < minDist) {
+                  minDist = d;
+                  nearest = k;
+                }
+              }
+              pkt.to = nearest;
+            }
+          }
+        }
+
+        // 6. Draw Nodes
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const glow = Math.sin(n.pulse) * 0.35 + 0.65;
+
+          if (n.isCore) {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.baseRadius * 2.2, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(16, 185, 129, ${0.18 * glow})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          ctx.fillStyle = n.isCore ? `rgba(52, 211, 153, ${glow})` : `rgba(200, 220, 215, ${0.6 * glow})`;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.baseRadius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // 7. Cursor Targeting Reticle
+        if (isHovered && mouseX > 0 && mouseY > 0) {
+          ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(mouseX, mouseY, 8, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.85)';
+          ctx.fillRect(mouseX - 1, mouseY - 1, 2, 2);
         }
 
         requestAnimationFrame(render);
@@ -735,25 +931,45 @@
 
       window.addEventListener('resize', () => {
         resize();
-        initStars();
+        initNetwork();
       });
 
-      canvas.parentElement.addEventListener('mousemove', (e) => {
+      const banner = canvas.parentElement;
+      banner.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
-        targetX = ((e.clientX - rect.left) / width - 0.5) * 22;
-        targetY = ((e.clientY - rect.top) / height - 0.5) * 22;
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        isHovered = true;
       });
 
-      canvas.parentElement.addEventListener('touchmove', (e) => {
+      banner.addEventListener('mouseleave', () => {
+        isHovered = false;
+        mouseX = -1000;
+        mouseY = -1000;
+      });
+
+      banner.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        triggerPulse(e.clientX - rect.left, e.clientY - rect.top);
+      });
+
+      banner.addEventListener('touchmove', (e) => {
         if (e.touches.length > 0) {
           const rect = canvas.getBoundingClientRect();
-          targetX = ((e.touches[0].clientX - rect.left) / width - 0.5) * 22;
-          targetY = ((e.touches[0].clientY - rect.top) / height - 0.5) * 22;
+          mouseX = e.touches[0].clientX - rect.left;
+          mouseY = e.touches[0].clientY - rect.top;
+          isHovered = true;
         }
       }, { passive: true });
 
+      banner.addEventListener('touchend', () => {
+        isHovered = false;
+        mouseX = -1000;
+        mouseY = -1000;
+      });
+
       resize();
-      initStars();
+      initNetwork();
       render();
     })();
 
