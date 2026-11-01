@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rudra — developer</title>
-  
+
   <!-- Fonts: Silkscreen (Pixel titles) and JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&display=swap"
+    rel="stylesheet">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -41,13 +44,16 @@
     ::-webkit-scrollbar {
       width: 5px;
     }
+
     ::-webkit-scrollbar-track {
       background: #000000;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #18181b;
       border-radius: 4px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: #27272a;
     }
@@ -66,6 +72,7 @@
       text-decoration-color: #27272a;
       transition: all 0.15s ease-in-out;
     }
+
     .retro-link:hover {
       text-decoration-color: #f4f4f5;
       color: #ffffff;
@@ -73,74 +80,120 @@
 
     /* Waveform audio animation */
     @keyframes wavePulse {
-      0%, 100% { height: 10px; }
-      50% { height: 38px; }
+
+      0%,
+      100% {
+        height: 10px;
+      }
+
+      50% {
+        height: 38px;
+      }
     }
-    .wave-bar-1 { animation: wavePulse 1.1s ease-in-out infinite 0.1s; }
-    .wave-bar-2 { animation: wavePulse 0.9s ease-in-out infinite 0.3s; }
-    .wave-bar-3 { animation: wavePulse 1.4s ease-in-out infinite 0.2s; }
-    .wave-bar-4 { animation: wavePulse 0.8s ease-in-out infinite 0.4s; }
-    .wave-bar-5 { animation: wavePulse 1.2s ease-in-out infinite 0.15s; }
-    .wave-bar-6 { animation: wavePulse 1.0s ease-in-out infinite 0.35s; }
-    .wave-bar-7 { animation: wavePulse 1.3s ease-in-out infinite 0.25s; }
+
+    .wave-bar-1 {
+      animation: wavePulse 1.1s ease-in-out infinite 0.1s;
+    }
+
+    .wave-bar-2 {
+      animation: wavePulse 0.9s ease-in-out infinite 0.3s;
+    }
+
+    .wave-bar-3 {
+      animation: wavePulse 1.4s ease-in-out infinite 0.2s;
+    }
+
+    .wave-bar-4 {
+      animation: wavePulse 0.8s ease-in-out infinite 0.4s;
+    }
+
+    .wave-bar-5 {
+      animation: wavePulse 1.2s ease-in-out infinite 0.15s;
+    }
+
+    .wave-bar-6 {
+      animation: wavePulse 1.0s ease-in-out infinite 0.35s;
+    }
+
+    .wave-bar-7 {
+      animation: wavePulse 1.3s ease-in-out infinite 0.25s;
+    }
 
     /* Blinking terminal cursor */
     @keyframes cursorBlink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+
+      0%,
+      49% {
+        opacity: 1;
+      }
+
+      50%,
+      100% {
+        opacity: 0;
+      }
     }
+
     .terminal-cursor {
       animation: cursorBlink 1s steps(2, start) infinite;
     }
   </style>
 </head>
-<body class="bg-[#000000] text-[#a1a1aa] font-mono selection:bg-[#27272a] selection:text-white min-h-screen py-4 sm:py-10 px-3 sm:px-4 flex justify-center items-start antialiased">
+
+<body
+  class="bg-[#000000] text-[#a1a1aa] font-mono selection:bg-[#27272a] selection:text-white min-h-screen py-4 sm:py-10 px-3 sm:px-4 flex justify-center items-start antialiased">
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#121215] border border-zinc-700/80 text-zinc-200 text-xs px-4 py-2 rounded shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-200">
+  <div id="toast"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#121215] border border-zinc-700/80 text-zinc-200 text-xs px-4 py-2 rounded shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-200">
     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
     <span id="toastMsg">email copied to clipboard</span>
   </div>
 
   <!-- Main Container matching the exact layout of kartik.lol -->
-  <main class="w-full max-w-[680px] border border-borderSubtle bg-cardBg rounded-xl overflow-hidden shadow-2xl flex flex-col">
+  <main
+    class="w-full max-w-[680px] border border-borderSubtle bg-cardBg rounded-xl overflow-hidden shadow-2xl flex flex-col">
 
     <!-- 1. Header Interactive Starfield Banner -->
     <div class="relative w-full h-36 sm:h-44 bg-black border-b border-borderSubtle overflow-hidden select-none">
       <canvas id="starfield" class="w-full h-full block cursor-crosshair"></canvas>
-      <div class="absolute bottom-2 right-3 pointer-events-none text-[9px] text-zinc-600 font-pixel tracking-widest opacity-60">
+      <div
+        class="absolute bottom-2 right-3 pointer-events-none text-[9px] text-zinc-600 font-pixel tracking-widest opacity-60">
         [SYS_ONLINE]
       </div>
     </div>
 
     <!-- 2. Profile & Hero Section -->
-    <section class="p-6 sm:p-7 border-b border-borderSubtle flex flex-col sm:flex-row items-start sm:items-center gap-5">
+    <section
+      class="p-6 sm:p-7 border-b border-borderSubtle flex flex-col sm:flex-row items-start sm:items-center gap-5">
       <!-- Pixel Avatar -->
-      <div class="relative w-20 h-20 rounded-full border border-zinc-800 p-1 bg-surface shrink-0 hover:border-zinc-500 transition-colors">
-        <svg class="w-full h-full rounded-full pixelated bg-zinc-950" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="32" height="32" fill="#08080a"/>
+      <div
+        class="relative w-20 h-20 rounded-full border border-zinc-800 p-1 bg-surface shrink-0 hover:border-zinc-500 transition-colors">
+        <svg class="w-full h-full rounded-full pixelated bg-zinc-950" viewBox="0 0 32 32" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" fill="#08080a" />
           <!-- Wings/Ears -->
-          <rect x="5" y="7" width="5" height="5" fill="#1e3a2f"/>
-          <rect x="22" y="7" width="5" height="5" fill="#1e3a2f"/>
+          <rect x="5" y="7" width="5" height="5" fill="#1e3a2f" />
+          <rect x="22" y="7" width="5" height="5" fill="#1e3a2f" />
           <!-- Mascot body -->
-          <rect x="7" y="10" width="18" height="17" rx="3" fill="#2d523e"/>
+          <rect x="7" y="10" width="18" height="17" rx="3" fill="#2d523e" />
           <!-- Face Plate -->
-          <rect x="10" y="15" width="12" height="11" fill="#e2e8f0"/>
+          <rect x="10" y="15" width="12" height="11" fill="#e2e8f0" />
           <!-- Big Pixel Eyes -->
-          <rect x="8" y="12" width="6" height="6" fill="#f8fafc"/>
-          <rect x="18" y="12" width="6" height="6" fill="#f8fafc"/>
+          <rect x="8" y="12" width="6" height="6" fill="#f8fafc" />
+          <rect x="18" y="12" width="6" height="6" fill="#f8fafc" />
           <!-- Pupils -->
-          <rect x="11" y="14" width="2" height="3" fill="#090d16"/>
-          <rect x="19" y="14" width="2" height="3" fill="#090d16"/>
+          <rect x="11" y="14" width="2" height="3" fill="#090d16" />
+          <rect x="19" y="14" width="2" height="3" fill="#090d16" />
           <!-- Catchlights -->
-          <rect x="10" y="13" width="1" height="1" fill="#38bdf8"/>
-          <rect x="18" y="13" width="1" height="1" fill="#38bdf8"/>
+          <rect x="10" y="13" width="1" height="1" fill="#38bdf8" />
+          <rect x="18" y="13" width="1" height="1" fill="#38bdf8" />
           <!-- Beak / Nose -->
-          <polygon points="16,16 14,19 18,19" fill="#f59e0b"/>
+          <polygon points="16,16 14,19 18,19" fill="#f59e0b" />
           <!-- Bowknot -->
-          <polygon points="16,21 13,23 19,23" fill="#15803d"/>
+          <polygon points="16,21 13,23 19,23" fill="#15803d" />
         </svg>
-        <span class="absolute bottom-1 right-1 w-3 h-3 bg-emerald-500 border-2 border-black rounded-full" title="Available for opportunities"></span>
+        <span class="absolute bottom-1 right-1 w-3 h-3 bg-emerald-500 border-2 border-black rounded-full"
+          title="Available for opportunities"></span>
       </div>
 
       <!-- Identity Details -->
@@ -154,37 +207,50 @@
 
         <!-- Social Icons Row (Pixelated square outline buttons) -->
         <div class="flex items-center gap-2 mt-4 flex-wrap">
-          
+
           <!-- Mail (Copies real email) -->
-          <button onclick="copyToClipboard('rudrasalokhe100@gmail.com')" 
-             class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
-             title="Copy Email (rudrasalokhe100@gmail.com)">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <button onclick="copyToClipboard('rudrasalokhe100@gmail.com')"
+            class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
+            title="Copy Email (rudrasalokhe100@gmail.com)">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
           </button>
 
           <!-- GitHub -->
-          <a href="https://github.com/rudrasalokhe" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
-             title="GitHub">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <a href="https://github.com/rudrasalokhe" target="_blank" rel="noopener noreferrer"
+            class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
+            title="GitHub">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+            </svg>
           </a>
 
           <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/rudra-salokhe-12196b250/" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
-             title="LinkedIn">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <a href="https://www.linkedin.com/in/rudra-salokhe-12196b250/" target="_blank" rel="noopener noreferrer"
+            class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
+            title="LinkedIn">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
           </a>
 
           <!-- X / Twitter -->
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" 
-             class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
-             title="X / Twitter">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="https://x.com/rs2006_05" target="_blank" rel="noopener noreferrer"
+            class="w-8 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-all"
+            title="X / Twitter">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
           </a>
 
           <!-- Status badge -->
-          <div class="px-2.5 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-[11px] text-zinc-400 gap-2">
+          <div
+            class="px-2.5 h-8 rounded border border-borderSubtle bg-[#0c0c0e] flex items-center justify-center text-[11px] text-zinc-400 gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>available for work</span>
           </div>
@@ -269,18 +335,20 @@
 
       <div class="space-y-3">
         <!-- 1. NMIMS MPSTME -->
-        <div class="border border-borderSubtle rounded-lg p-3.5 bg-surface flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 hover:border-zinc-600 transition-colors">
+        <div
+          class="border border-borderSubtle rounded-lg p-3.5 bg-surface flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 hover:border-zinc-600 transition-colors">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-11 h-11 rounded-lg bg-white p-1 border border-zinc-700/60 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-              <img src="assets/schools/nmims.jpg" 
-                   onerror="this.onerror=null; this.src='https://image-static.collegedunia.com/public/college_data/images/logos/1506323004Logo.jpg';" 
-                   alt="NMIMS Logo" 
-                   class="w-full h-full object-contain">
+            <div
+              class="w-11 h-11 rounded-lg bg-white p-1 border border-zinc-700/60 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+              <img src="assets/schools/nmims.jpg"
+                onerror="this.onerror=null; this.src='https://image-static.collegedunia.com/public/college_data/images/logos/1506323004Logo.jpg';"
+                alt="NMIMS Logo" class="w-full h-full object-contain">
             </div>
             <div>
               <div class="flex items-center gap-2 flex-wrap">
                 <span class="text-sm font-bold text-zinc-100">NMIMS MPSTME, Mumbai</span>
-                <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 font-pixel">ENROLLED</span>
+                <span
+                  class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 font-pixel">ENROLLED</span>
               </div>
               <p class="text-xs text-zinc-300 mt-0.5">MBA-Tech in Computer Engineering</p>
               <p class="text-[11px] text-muted">Integrated technology &amp; management program</p>
@@ -292,18 +360,20 @@
         </div>
 
         <!-- 2. Vidyalankar Polytechnic -->
-        <div class="border border-borderSubtle rounded-lg p-3.5 bg-surface flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 hover:border-zinc-600 transition-colors">
+        <div
+          class="border border-borderSubtle rounded-lg p-3.5 bg-surface flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 hover:border-zinc-600 transition-colors">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-11 h-11 rounded-lg bg-white p-1 border border-zinc-700/60 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-              <img src="assets/schools/vidyalankar.png" 
-                   onerror="this.onerror=null; this.src='https://vpt.edu.in/wp-content/uploads/2023/07/VP-fav-icon.png';" 
-                   alt="Vidyalankar Polytechnic Logo" 
-                   class="w-full h-full object-contain">
+            <div
+              class="w-11 h-11 rounded-lg bg-white p-1 border border-zinc-700/60 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+              <img src="assets/schools/vidyalankar.png"
+                onerror="this.onerror=null; this.src='https://vpt.edu.in/wp-content/uploads/2023/07/VP-fav-icon.png';"
+                alt="Vidyalankar Polytechnic Logo" class="w-full h-full object-contain">
             </div>
             <div>
               <div class="flex items-center gap-2 flex-wrap">
                 <span class="text-sm font-bold text-zinc-100">Vidyalankar Polytechnic, Mumbai</span>
-                <span class="text-[9px] px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800 font-pixel">COMPLETED</span>
+                <span
+                  class="text-[9px] px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800 font-pixel">COMPLETED</span>
               </div>
               <p class="text-xs text-zinc-300 mt-0.5">Diploma in Computer Engineering</p>
               <p class="text-[11px] text-muted">Engineering foundations, programming &amp; system architecture</p>
@@ -320,57 +390,66 @@
     <section class="p-6 sm:p-7 border-b border-borderSubtle space-y-3.5">
       <h2 class="text-xs font-pixel tracking-wider text-zinc-300 uppercase">skills</h2>
       <div class="flex flex-wrap gap-2 text-xs">
-        
+
         <!-- Python -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-amber-400 text-xs">🐍</span>
           <span>python</span>
         </span>
 
         <!-- FastAPI -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-emerald-400 font-bold">⚡</span>
           <span>fastapi</span>
         </span>
 
         <!-- TypeScript -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="bg-[#3178c6] text-black font-bold px-1 rounded-[2px] text-[10px] leading-tight">TS</span>
           <span>typescript</span>
         </span>
 
         <!-- Node.js -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-green-500">⬢</span>
           <span>node.js</span>
         </span>
 
         <!-- Next.js -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="bg-zinc-200 text-black font-bold px-1 rounded-full text-[9px] leading-tight">N</span>
           <span>next.js</span>
         </span>
 
         <!-- React -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-cyan-400">⚛</span>
           <span>react</span>
         </span>
 
         <!-- PostgreSQL -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-blue-400 text-xs">🐘</span>
           <span>postgresql</span>
         </span>
 
         <!-- Docker -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-sky-400 text-xs">🐳</span>
           <span>docker</span>
         </span>
 
         <!-- Git -->
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-borderSubtle bg-surface text-zinc-200 hover:border-zinc-500 transition-colors">
           <span class="text-orange-500">⌥</span>
           <span>git</span>
         </span>
@@ -388,10 +467,12 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
         <!-- Project 1: THIRD -->
-        <div class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
+        <div
+          class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
           <div>
             <!-- Live Audio Waveform Graphic Mockup -->
-            <div class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col justify-between relative overflow-hidden group-hover:border-zinc-700 transition-colors">
+            <div
+              class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col justify-between relative overflow-hidden group-hover:border-zinc-700 transition-colors">
               <div class="flex items-center justify-between text-[9px] text-zinc-500">
                 <span class="flex items-center gap-1 text-emerald-400">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
@@ -419,37 +500,46 @@
               <span class="text-sm font-bold text-zinc-100">
                 THIRD
               </span>
-              <a href="https://github.com/rudrasalokhe" target="_blank" rel="noopener noreferrer" class="text-zinc-600 hover:text-white transition-colors" title="Repository">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <a href="https://github.com/rudrasalokhe" target="_blank" rel="noopener noreferrer"
+                class="text-zinc-600 hover:text-white transition-colors" title="Repository">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
               </a>
             </div>
 
             <p class="text-xs text-muted mt-2 leading-relaxed">
-              Real-time sports audio &amp; telemetry voice agent that synthesizes match context into low-latency commentary audio.
+              Real-time sports audio &amp; telemetry voice agent that synthesizes match context into low-latency
+              commentary audio.
             </p>
           </div>
 
           <div class="flex flex-wrap gap-1.5 mt-3 pt-2">
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">fastapi</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">websockets</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">fastapi</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">websockets</span>
             <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">groq</span>
             <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">python</span>
           </div>
         </div>
 
         <!-- Project 2: POLAR -->
-        <div class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
+        <div
+          class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
           <div>
             <!-- Radar Scanner Graphic Mockup -->
-            <div class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-zinc-700 transition-colors">
+            <div
+              class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-zinc-700 transition-colors">
               <div class="w-24 h-24 rounded-full border border-zinc-800 relative flex items-center justify-center">
                 <div class="w-16 h-16 rounded-full border border-dashed border-zinc-800/80"></div>
                 <div class="w-8 h-8 rounded-full border border-zinc-700"></div>
                 <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full absolute top-5 right-5 animate-pulse"></div>
                 <div class="w-1 h-1 bg-sky-400 rounded-full absolute bottom-4 left-6"></div>
                 <!-- Conic radar sweep -->
-                <div class="absolute inset-0 rounded-full animate-[spin_3.5s_linear_infinite]" 
-                     style="background: conic-gradient(from 0deg, transparent 270deg, rgba(255, 255, 255, 0.15) 360deg);">
+                <div class="absolute inset-0 rounded-full animate-[spin_3.5s_linear_infinite]"
+                  style="background: conic-gradient(from 0deg, transparent 270deg, rgba(255, 255, 255, 0.15) 360deg);">
                 </div>
               </div>
               <div class="absolute bottom-2 left-3 text-[8px] text-zinc-600">
@@ -458,37 +548,49 @@
             </div>
 
             <div class="flex items-center justify-between">
-              <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-zinc-100 hover:text-white retro-link">
+              <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank"
+                rel="noopener noreferrer" class="text-sm font-bold text-zinc-100 hover:text-white retro-link">
                 POLAR
               </a>
-              <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank" rel="noopener noreferrer" class="text-zinc-600 hover:text-white transition-colors" title="Repository">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <a href="https://github.com/rudrasalokhe/subzero-PolarLink-SIH26" target="_blank"
+                rel="noopener noreferrer" class="text-zinc-600 hover:text-white transition-colors" title="Repository">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
               </a>
             </div>
 
             <p class="text-xs text-muted mt-2 leading-relaxed">
-              Offline-first polar expedition asset &amp; logistics command system with local state caching and peer-to-peer sync.
+              Offline-first polar expedition asset &amp; logistics command system with local state caching and
+              peer-to-peer sync.
             </p>
           </div>
 
           <div class="flex flex-wrap gap-1.5 mt-3 pt-2">
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">next.js</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">express</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">mongodb</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">next.js</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">express</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">mongodb</span>
             <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">docker</span>
           </div>
         </div>
 
         <!-- Project 3: DEALSINBOX -->
-        <div class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
+        <div
+          class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
           <div>
-            <div class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col justify-between relative text-[10px] group-hover:border-zinc-700 transition-colors">
+            <div
+              class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col justify-between relative text-[10px] group-hover:border-zinc-700 transition-colors">
               <div class="flex justify-between text-zinc-500 text-[9px]">
                 <span>CRM_PIPELINE</span>
                 <span class="text-emerald-400">ACTIVE</span>
               </div>
               <div class="space-y-1.5">
-                <div class="flex justify-between items-center bg-zinc-900/60 p-1.5 rounded border border-zinc-800 text-zinc-300">
+                <div
+                  class="flex justify-between items-center bg-zinc-900/60 p-1.5 rounded border border-zinc-800 text-zinc-300">
                   <span class="truncate"># brand_sponsor_q4</span>
                   <span class="text-emerald-400 font-mono text-[9px]">$5,200</span>
                 </div>
@@ -504,46 +606,60 @@
             </div>
 
             <div class="flex items-center justify-between">
-              <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-zinc-100 hover:text-white retro-link">
+              <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer"
+                class="text-sm font-bold text-zinc-100 hover:text-white retro-link">
                 DEALSINBOX
               </a>
               <div class="flex items-center gap-2">
-                <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer" class="text-[10px] text-zinc-400 hover:text-white transition-colors" title="Live Site">
+                <a href="https://dealsinbox.in/" target="_blank" rel="noopener noreferrer"
+                  class="text-[10px] text-zinc-400 hover:text-white transition-colors" title="Live Site">
                   LIVE ↗
                 </a>
-                <a href="https://github.com/rudrasalokhe/dealinbox" target="_blank" rel="noopener noreferrer" class="text-zinc-600 hover:text-white transition-colors" title="Repository">
-                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <a href="https://github.com/rudrasalokhe/dealinbox" target="_blank" rel="noopener noreferrer"
+                  class="text-zinc-600 hover:text-white transition-colors" title="Repository">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
                 </a>
               </div>
             </div>
 
             <p class="text-xs text-muted mt-2 leading-relaxed">
-              High-throughput deals aggregation &amp; CRM platform for creators to streamline inquiries, pricing tiers, and contracts.
+              High-throughput deals aggregation &amp; CRM platform for creators to streamline inquiries, pricing tiers,
+              and contracts.
             </p>
           </div>
 
           <div class="flex flex-wrap gap-1.5 mt-3 pt-2">
             <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">python</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">fastapi</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">postgresql</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">next.js</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">fastapi</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">postgresql</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">next.js</span>
           </div>
         </div>
 
         <!-- Project 4: PAYSLOT.IN -->
-        <div class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
+        <div
+          class="border border-borderSubtle rounded-lg p-3.5 bg-surface hover:border-zinc-600 transition-all flex flex-col justify-between group">
           <div>
-            <div class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col justify-between relative group-hover:border-zinc-700 transition-colors">
+            <div
+              class="w-full h-32 rounded bg-black border border-borderSubtle mb-3 p-3 flex flex-col justify-between relative group-hover:border-zinc-700 transition-colors">
               <div class="flex justify-between text-zinc-500 text-[9px]">
                 <span class="text-sky-400 font-pixel">WEBRTC_RTC</span>
                 <span>ENCRYPTED</span>
               </div>
               <div class="flex items-center justify-center gap-3">
-                <div class="w-12 h-12 rounded border border-zinc-800 bg-zinc-900/60 flex items-center justify-center text-[10px] text-zinc-400 font-mono">
+                <div
+                  class="w-12 h-12 rounded border border-zinc-800 bg-zinc-900/60 flex items-center justify-center text-[10px] text-zinc-400 font-mono">
                   DOCTOR
                 </div>
                 <div class="text-zinc-600 text-xs">⇄</div>
-                <div class="w-12 h-12 rounded border border-zinc-800 bg-zinc-900/60 flex items-center justify-center text-[10px] text-zinc-400 font-mono">
+                <div
+                  class="w-12 h-12 rounded border border-zinc-800 bg-zinc-900/60 flex items-center justify-center text-[10px] text-zinc-400 font-mono">
                   PATIENT
                 </div>
               </div>
@@ -554,29 +670,38 @@
             </div>
 
             <div class="flex items-center justify-between">
-              <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-zinc-100 hover:text-white retro-link">
+              <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer"
+                class="text-sm font-bold text-zinc-100 hover:text-white retro-link">
                 PAYSLOT.IN
               </a>
               <div class="flex items-center gap-2">
-                <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer" class="text-[10px] text-zinc-400 hover:text-white transition-colors" title="Live Site">
+                <a href="https://payslot.in/" target="_blank" rel="noopener noreferrer"
+                  class="text-[10px] text-zinc-400 hover:text-white transition-colors" title="Live Site">
                   LIVE ↗
                 </a>
-                <a href="https://github.com/rudrasalokhe/payslot-web" target="_blank" rel="noopener noreferrer" class="text-zinc-600 hover:text-white transition-colors" title="Repository">
-                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <a href="https://github.com/rudrasalokhe/payslot-web" target="_blank" rel="noopener noreferrer"
+                  class="text-zinc-600 hover:text-white transition-colors" title="Repository">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
                 </a>
               </div>
             </div>
 
             <p class="text-xs text-muted mt-2 leading-relaxed">
-              Telemedicine platform for instant appointments, video consultations via WebRTC, and verifiable digital prescriptions.
+              Telemedicine platform for instant appointments, video consultations via WebRTC, and verifiable digital
+              prescriptions.
             </p>
           </div>
 
           <div class="flex flex-wrap gap-1.5 mt-3 pt-2">
             <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">react</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">node.js</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">node.js</span>
             <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">webrtc</span>
-            <span class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">postgresql</span>
+            <span
+              class="text-[9px] px-2 py-0.5 rounded bg-black border border-borderSubtle text-zinc-400">postgresql</span>
           </div>
         </div>
 
@@ -587,19 +712,24 @@
     <section class="p-6 sm:p-7 border-b border-borderSubtle space-y-3.5">
       <h2 class="text-xs font-pixel tracking-wider text-zinc-300 uppercase">software i use :)</h2>
       <div class="flex flex-wrap gap-2 text-xs">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
           <span class="text-blue-400 font-bold">&gt;_</span> vs code
         </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
           <span class="text-purple-400">👻</span> ghostty
         </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
           <span class="text-sky-400">🐳</span> docker
         </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
           <span class="text-orange-400">🚀</span> postman
         </span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded border border-borderSubtle bg-surface text-zinc-300 hover:border-zinc-500 transition-colors">
           <span class="text-pink-400">🌐</span> arc / chrome
         </span>
       </div>
@@ -614,16 +744,19 @@
 
       <!-- 2-Column Visual Games Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        
+
         <!-- Game 1: Grand Theft Auto V -->
-        <div class="group border border-borderSubtle rounded-lg bg-surface p-3 hover:border-zinc-500 transition-all duration-200 flex flex-col justify-between">
+        <div
+          class="group border border-borderSubtle rounded-lg bg-surface p-3 hover:border-zinc-500 transition-all duration-200 flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-32 sm:h-36 rounded overflow-hidden mb-2.5 bg-black border border-borderSubtle">
-              <img src="assets/games/gtav.jpg" 
-                   onerror="this.onerror=null; this.src='https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg';" 
-                   alt="Grand Theft Auto V" 
-                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 right-2 text-[8px] font-pixel px-1.5 py-0.5 rounded bg-black/80 text-zinc-300 border border-zinc-700/60 backdrop-blur-sm">
+            <div
+              class="relative w-full h-32 sm:h-36 rounded overflow-hidden mb-2.5 bg-black border border-borderSubtle">
+              <img src="assets/games/gtav.jpg"
+                onerror="this.onerror=null; this.src='https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg';"
+                alt="Grand Theft Auto V"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span
+                class="absolute top-2 right-2 text-[8px] font-pixel px-1.5 py-0.5 rounded bg-black/80 text-zinc-300 border border-zinc-700/60 backdrop-blur-sm">
                 ROCKSTAR
               </span>
             </div>
@@ -634,21 +767,25 @@
               open-world systems, simulation &amp; physics modeling.
             </p>
           </div>
-          <div class="mt-3 pt-2 border-t border-borderSubtle/60 flex items-center justify-between text-[9px] text-zinc-500 font-pixel">
+          <div
+            class="mt-3 pt-2 border-t border-borderSubtle/60 flex items-center justify-between text-[9px] text-zinc-500 font-pixel">
             <span>OPEN-WORLD</span>
             <span class="text-amber-400">★ 10/10</span>
           </div>
         </div>
 
         <!-- Game 2: Valorant -->
-        <div class="group border border-borderSubtle rounded-lg bg-surface p-3 hover:border-zinc-500 transition-all duration-200 flex flex-col justify-between">
+        <div
+          class="group border border-borderSubtle rounded-lg bg-surface p-3 hover:border-zinc-500 transition-all duration-200 flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-32 sm:h-36 rounded overflow-hidden mb-2.5 bg-black border border-borderSubtle">
-              <img src="assets/games/valorant.jpg" 
-                   onerror="this.onerror=null; this.src='https://cdna.artstation.com/p/assets/images/images/038/999/504/4k/suke-8.jpg?1624647293';" 
-                   alt="Valorant" 
-                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <span class="absolute top-2 right-2 text-[8px] font-pixel px-1.5 py-0.5 rounded bg-black/80 text-rose-300 border border-rose-900/60 backdrop-blur-sm">
+            <div
+              class="relative w-full h-32 sm:h-36 rounded overflow-hidden mb-2.5 bg-black border border-borderSubtle">
+              <img src="assets/games/valorant.jpg"
+                onerror="this.onerror=null; this.src='https://cdna.artstation.com/p/assets/images/images/038/999/504/4k/suke-8.jpg?1624647293';"
+                alt="Valorant"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+              <span
+                class="absolute top-2 right-2 text-[8px] font-pixel px-1.5 py-0.5 rounded bg-black/80 text-rose-300 border border-rose-900/60 backdrop-blur-sm">
                 RIOT GAMES
               </span>
             </div>
@@ -659,7 +796,8 @@
               tactical 5v5 shooter, crosshair discipline, map control &amp; utility coordination.
             </p>
           </div>
-          <div class="mt-3 pt-2 border-t border-borderSubtle/60 flex items-center justify-between text-[9px] text-zinc-500 font-pixel">
+          <div
+            class="mt-3 pt-2 border-t border-borderSubtle/60 flex items-center justify-between text-[9px] text-zinc-500 font-pixel">
             <span>TACTICAL FPS</span>
             <span class="text-rose-400">COMPETITIVE</span>
           </div>
@@ -683,12 +821,12 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-3 pt-1">
-        <button onclick="copyToClipboard('rudrasalokhe100@gmail.com')" 
-                class="text-xs px-3 py-1.5 rounded bg-surface border border-borderSubtle text-zinc-300 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-colors flex items-center gap-2">
+        <button onclick="copyToClipboard('rudrasalokhe100@gmail.com')"
+          class="text-xs px-3 py-1.5 rounded bg-surface border border-borderSubtle text-zinc-300 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-colors flex items-center gap-2">
           <span>copy email</span>
         </button>
-        <a href="mailto:rudrasalokhe100@gmail.com" 
-           class="text-xs px-3 py-1.5 rounded bg-surface border border-borderSubtle text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-colors">
+        <a href="mailto:rudrasalokhe100@gmail.com"
+          class="text-xs px-3 py-1.5 rounded bg-surface border border-borderSubtle text-zinc-400 hover:text-white hover:border-zinc-500 hover:bg-zinc-900 transition-colors">
           send message ↗
         </a>
       </div>
@@ -698,100 +836,100 @@
 
   <!-- Interactive Canvas Starfield Script -->
   <script>
-    (function () {
-      const canvas = document.getElementById('starfield');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width = 0, height = 0;
-      let stars = [];
-      const starCount = 65;
-      let mouseX = 0, mouseY = 0;
-      let targetX = 0, targetY = 0;
+      (function () {
+        const canvas = document.getElementById('starfield');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width = 0, height = 0;
+        let stars = [];
+        const starCount = 65;
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
 
-      function resize() {
-        const parent = canvas.parentElement;
-        if (!parent) return;
-        width = parent.clientWidth;
-        height = parent.clientHeight;
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = Math.floor(width * dpr);
-        canvas.height = Math.floor(height * dpr);
-        ctx.scale(dpr, dpr);
-      }
-
-      function initStars() {
-        stars = [];
-        for (let i = 0; i < starCount; i++) {
-          stars.push({
-            x: Math.random() * (width || 680),
-            y: Math.random() * (height || 180),
-            size: Math.random() > 0.8 ? 2 : 1, // Retro pixel sizes: 1px or 2px
-            speedX: (Math.random() - 0.5) * 0.25,
-            speedY: (Math.random() - 0.5) * 0.2,
-            opacity: Math.random() * 0.5 + 0.3,
-            pulse: Math.random() * 0.02 + 0.005
-          });
+        function resize() {
+          const parent = canvas.parentElement;
+          if (!parent) return;
+          width = parent.clientWidth;
+          height = parent.clientHeight;
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          ctx.scale(dpr, dpr);
         }
-      }
 
-      function render() {
-        if (!width || !height) {
+        function initStars() {
+          stars = [];
+          for (let i = 0; i < starCount; i++) {
+            stars.push({
+              x: Math.random() * (width || 680),
+              y: Math.random() * (height || 180),
+              size: Math.random() > 0.8 ? 2 : 1, // Retro pixel sizes: 1px or 2px
+              speedX: (Math.random() - 0.5) * 0.25,
+              speedY: (Math.random() - 0.5) * 0.2,
+              opacity: Math.random() * 0.5 + 0.3,
+              pulse: Math.random() * 0.02 + 0.005
+            });
+          }
+        }
+
+        function render() {
+          if (!width || !height) {
+            resize();
+            initStars();
+          }
+
+          ctx.clearRect(0, 0, width, height);
+
+          mouseX += (targetX - mouseX) * 0.05;
+          mouseY += (targetY - mouseY) * 0.05;
+
+          for (let i = 0; i < stars.length; i++) {
+            const s = stars[i];
+            s.x += s.speedX;
+            s.y += s.speedY;
+
+            if (s.x < 0) s.x = width;
+            if (s.x > width) s.x = 0;
+            if (s.y < 0) s.y = height;
+            if (s.y > height) s.y = 0;
+
+            s.opacity += Math.sin(Date.now() * s.pulse) * 0.01;
+            const alpha = Math.max(0.15, Math.min(0.85, s.opacity));
+
+            ctx.fillStyle = `rgba(220, 220, 230, ${alpha})`;
+            const renderX = Math.floor(s.x + mouseX * (s.size * 0.25));
+            const renderY = Math.floor(s.y + mouseY * (s.size * 0.25));
+
+            // Draw crisp pixel squares
+            ctx.fillRect(renderX, renderY, s.size, s.size);
+          }
+
+          requestAnimationFrame(render);
+        }
+
+        window.addEventListener('resize', () => {
           resize();
           initStars();
-        }
+        });
 
-        ctx.clearRect(0, 0, width, height);
+        canvas.parentElement.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          targetX = ((e.clientX - rect.left) / width - 0.5) * 22;
+          targetY = ((e.clientY - rect.top) / height - 0.5) * 22;
+        });
 
-        mouseX += (targetX - mouseX) * 0.05;
-        mouseY += (targetY - mouseY) * 0.05;
+        canvas.parentElement.addEventListener('touchmove', (e) => {
+          if (e.touches.length > 0) {
+            const rect = canvas.getBoundingClientRect();
+            targetX = ((e.touches[0].clientX - rect.left) / width - 0.5) * 22;
+            targetY = ((e.touches[0].clientY - rect.top) / height - 0.5) * 22;
+          }
+        }, { passive: true });
 
-        for (let i = 0; i < stars.length; i++) {
-          const s = stars[i];
-          s.x += s.speedX;
-          s.y += s.speedY;
-
-          if (s.x < 0) s.x = width;
-          if (s.x > width) s.x = 0;
-          if (s.y < 0) s.y = height;
-          if (s.y > height) s.y = 0;
-
-          s.opacity += Math.sin(Date.now() * s.pulse) * 0.01;
-          const alpha = Math.max(0.15, Math.min(0.85, s.opacity));
-
-          ctx.fillStyle = `rgba(220, 220, 230, ${alpha})`;
-          const renderX = Math.floor(s.x + mouseX * (s.size * 0.25));
-          const renderY = Math.floor(s.y + mouseY * (s.size * 0.25));
-
-          // Draw crisp pixel squares
-          ctx.fillRect(renderX, renderY, s.size, s.size);
-        }
-
-        requestAnimationFrame(render);
-      }
-
-      window.addEventListener('resize', () => {
         resize();
         initStars();
-      });
-
-      canvas.parentElement.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        targetX = ((e.clientX - rect.left) / width - 0.5) * 22;
-        targetY = ((e.clientY - rect.top) / height - 0.5) * 22;
-      });
-
-      canvas.parentElement.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) {
-          const rect = canvas.getBoundingClientRect();
-          targetX = ((e.touches[0].clientX - rect.left) / width - 0.5) * 22;
-          targetY = ((e.touches[0].clientY - rect.top) / height - 0.5) * 22;
-        }
-      }, { passive: true });
-
-      resize();
-      initStars();
-      render();
-    })();
+        render();
+      })();
 
     // Copy to clipboard utility with toast feedback
     function copyToClipboard(text) {
@@ -838,4 +976,5 @@
     }
   </script>
 </body>
+
 </html>
